@@ -7,7 +7,7 @@ class Influencer < ApplicationRecord
 
 
   def primary_tag_is_not_in_secondary_tags
-    if self.tags.present? && self.tags.any?{ |x| x.id == self.primary_tag_id }
+    if self.influencer_tags.any? { |x| x.tag_id == self.primary_tag_id }
       errors.add(:primary_tag_id, "cannot be the same as one of the tags")
     end
   end
